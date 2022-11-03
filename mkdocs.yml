@@ -1,0 +1,293 @@
+# official tutorial
+# mkdocs-material: https://squidfunk.github.io/mkdocs-material/
+# mkdocs: https://www.mkdocs.org/user-guide/configuration/
+
+site_name: 互联网公墓
+site_url: https://saveweb.github.io/the-internet-cemetery/
+site_description: >-
+  这里是互联网公墓 Wiki，一个记录互联网失去的东西的地方，致力于收集一切和互联网失去的东西有关的信息。
+
+repo_name: saveweb/the-internet-cemetery
+repo_url: https://github.com/saveweb/the-internet-cemetery
+
+theme:
+  favicon: favicon.png
+  icon:
+    logo: material/grave-stone
+    admonition:
+      quote: bootstrap/cblb
+  font:
+    text: "-apple-system, Noto Sans, Nimbus Sans L, Arial, Liberation Sans, PingFang SC, Hiragino Sans GB, Noto Sans CJK SC, Source Han Sans SC, Source Han Sans CN, Microsoft YaHei, Wenquanyi Micro Hei, WenQuanYi Zen Hei, ST Heiti, SimHei, WenQuanYi Zen Hei Sharp, sans-serif"     # 跨平台中文字体解决方案 https://zenozeng.github.io/fonts.css/
+    code: "Sarasa Fixed SC, Noto Sans Mono CJK SC"
+  palette:
+  - media: "(prefers-color-scheme: light)"
+    primary: blue
+    scheme: default
+    toggle:
+      icon: material/toggle-switch-off-outline
+      name: 切换到暗模式
+  - media: "(prefers-color-scheme: dark)"
+    primary: blue
+    scheme: slate
+    toggle:
+      icon: material/toggle-switch
+      name: 切换到亮模式
+  name: material
+  custom_dir: overrides
+  language: zh              # 中文，解决中文搜索问题
+  features:
+    # - search.highlight
+    # - navigation.instant  # XHR 支持
+    # - navigation.tracking # 自动锚点更新
+    - navigation.indexes    # 文件夹下的 index.md 自动「连接」
+    - header.autohide
+    - navigation.top        # 回到顶部的按钮
+    # - toc.integrate
+    # - tabs                # 顶部选项卡/栏位
+
+use_directory_urls: false   # 开启后会增加复杂性，带来一点点的便利
+edit_uri: ""                # 隐藏编辑按钮
+
+markdown_extensions:
+# - legacy_em               # 恢复 Markdown 的严格加重符号语义
+- md_in_html                # HTML 内书写 Markdown
+- attr_list                 # 增加css-html样式，例如按钮，比如图片定义大小，caption    https://python-markdown.github.io/extensions/attr_list/
+# - legacy_attrs            # 增加css-html样式，已废弃，不推荐使用    https://python-markdown.github.io/extensions/legacy_attrs/
+- admonition                # 突出显示一些东西，比如 !!!info|bug|tips之类
+- footnotes                 # 支持脚注[^1]
+- def_list                  # 支持有序、无序、任务列表
+- pymdownx.superfences:     # 代码块相关
+    custom_fences:          # 代码块相关
+    - name: mermaid
+      class: mermaid
+      format: !!python/name:pymdownx.superfences.fence_code_format
+- toc:
+    permalink: "#"          # heading anchor
+    slugify: !!python/name:pymdownx.slugs.uslugify     # 解决中文标题解析问题
+- codehilite:
+    guess_lang: false
+    linenums: false
+- pymdownx.betterem:
+    smart_enable: all
+- pymdownx.tabbed:        # 标签页 https://squidfunk.github.io/mkdocs-material/reference/content-tabs/ # C++/python 代码例子切换
+    alternate_style: true
+- meta                    # YAML 元数据
+- pymdownx.tasklist
+- pymdownx.details
+- pymdownx.highlight      # 代码块相关
+- pymdownx.inlinehilite   # 代码块相关
+- pymdownx.snippets
+- pymdownx.magiclink
+- pymdownx.mark
+- pymdownx.critic         # 支持 markdown 高亮==、删除、注解等高级样式
+- pymdownx.keys           # 支持 快捷键渲染
+- pymdownx.emoji:         # 支持图标icons和表情渲染，比如:smile:
+    # emoji_index: !!python/name:materialx.emoji.twemoji
+    # emoji_generator: !!python/name:materialx.emoji.to_svg
+    options:
+      custom_icons:
+        - overrides/.icons
+# pymdownx.b64            # 将图片编码为 base64
+# - abbr                  # 缩写词，因为没有多少 Markdown 使用这样的语法，所以不会使用。
+# - nl2br                 # newline-to-break markdown 非严格换行，我不喜欢的插件
+# - pymdownx.arithmatex   # 数学公式latex支持
+# - pymdownx.pathconverter:
+#     base_path: ''       # default: ''
+#     relative_path: ''   # default ''
+#     absolute: false     # default: false
+#     tags: 'a script img link object embed'
+# - pymdownx.caret        # 上标、下划线
+# - pymdownx.smartsymbols # 1st 2en 以及特殊符号
+# - pymdownx.tilde        # 下标
+
+plugins:
+# - progress                # 显示构建状态，方便除错？    https://github.com/obuya/mkdocs-new-features-notifier
+- mkdocs-video:           # 支持内嵌本地视频    https://pypi.org/project/mkdocs-video/
+    is_video: True
+    css_style:
+      width: "100%"
+      height: "100%"
+# - minify:               # 将文件 minify 的插件   https://github.com/byrnereese/mkdocs-minify-plugin
+#     # minify_html: true # html 过多，导致生成时间变成了三倍……
+#     minify_js: true     # 只压缩 js 和 css 效果又不明显，所以不打算使用……
+#     minify_css: true
+#     htmlmin_opts:
+#       remove_comments: true
+#   #   js_files:
+#   #   - my/javascript/dir/file1.js
+#       css_files:
+#       - css/external_link_icon.css
+#       - css/footnotes.css
+#       - css/base.css
+#       - css/custom_admonitions.css
+# - search:
+#     separator: '[\s\u200b\-]'
+- exclude-search:
+    exclude:
+    - rule/*
+    - news_archive/*
+    - encryption/*
+- tags:
+    tags_file: tags.md
+- callouts                # 微软风格的 admonition     https://github.com/sondregronas/mkdocs-callouts
+- abs-to-rel              # 绝对路径转相对路径        https://pypi.org/project/mkdocs-abs-rel-plugin/
+# - pdf-export            # 导出为 PDF 格式，不过对于此 Wiki 来说，耗时过多。
+# - roamlinks             # 这是自动将链接转化为易于 mkdocs 的插件
+# - autolinks
+- exclude:
+    glob:
+    - "src/_HD_/*"
+    - "mkdocs/本地/*"
+    - "*.tmp"
+    - "*.gz"
+    - "encryption/*"
+    - "liquid/*"
+    # regex:
+    # - '.*\.(tmp|bin|tar)$'
+- blogging:
+    features:
+      tags:
+        index_page: tags.md
+        insert: bottom
+    time_format: '%Y-%m-%d %H:%M:%S'
+    meta_time_format: '%Y-%m-%dT%H:%M:%S'
+    dirs: # The directories to be included
+    - blog
+    categories:
+    - name: activities
+      dirs:
+      - activities
+      size: 50
+      template: overrides/custom-blog.html
+    - name: allowlist
+      dirs:
+      - allowlist
+      size: 50
+      template: overrides/custom-blog.html
+    - name: anti-censorship
+      dirs:
+      - anti-censorship
+      size: 50
+      template: overrides/custom-blog.html
+    - name: blocklist
+      dirs:
+      - blocklist
+      size: 50
+      template: overrides/custom-blog.html
+    - name: book
+      dirs:
+      - book
+      size: 50
+      template: overrides/custom-blog.html
+    - name: catch_the_wind
+      dirs:
+      - catch_the_wind
+      size: 50
+      template: overrides/custom-blog.html
+    - name: censorship
+      dirs:
+      - censorship
+      size: 50
+      template: overrides/custom-blog.html
+    - name: company
+      dirs:
+      - company
+      size: 50
+      template: overrides/custom-blog.html
+    - name: game
+      dirs:
+      - game
+      size: 50
+      template: overrides/custom-blog.html
+    - name: meme
+      dirs:
+      - meme
+      size: 50
+      template: overrides/custom-blog.html
+    - name: mkdocs
+      dirs:
+      - mkdocs
+      size: 50
+      template: overrides/custom-blog.html
+    - name: news_archive
+      dirs:
+      - news_archive
+      size: 50
+      template: overrides/custom-blog.html
+    - name: people
+      dirs:
+      - people
+      size: 50
+      template: overrides/custom-blog.html
+    - name: punish
+      dirs:
+      - punish
+      size: 50
+      template: overrides/custom-blog.html
+    - name: research
+      dirs:
+      - research
+      size: 50
+      template: overrides/custom-blog.html
+    - name: rule
+      dirs:
+      - rule
+      size: 50
+      template: overrides/custom-blog.html
+    - name: serviceprovider
+      dirs:
+      - serviceprovider
+      size: 50
+      template: overrides/custom-blog.html
+    - name: software
+      dirs:
+      - software
+      size: 50
+      template: overrides/custom-blog.html
+    - name: technology
+      dirs:
+      - technology
+      size: 50
+      template: overrides/custom-blog.html
+    - name: sound
+      dirs:
+      - sound
+      size: 50
+      template: overrides/custom-blog.html
+    - name: unclear
+      dirs:
+      - unclear
+      size: 50
+      template: overrides/custom-blog.html
+    - name: video
+      dirs:
+      - video
+      size: 50
+      template: overrides/custom-blog.html
+    - name: website
+      dirs:
+      - website
+      size: 50
+      template: overrides/custom-blog.html
+- redirects:              # 重定向插件                https://github.com/datarobot/mkdocs-redirects
+    redirect_maps:
+      # 示例："website/页面A.md": "company/页面B.md"
+
+extra:
+  generator: false
+  social:
+  - icon: fontawesome/brands/telegram
+    link: https://test.test
+  - icon: material/email-outline
+    link: mailto:test@test.com
+
+extra_css:
+- "css/external_link_icon.css"
+- "css/footnotes.css"          # 脚注 CSS
+- "css/base.css"               # 格式处理
+- "css/custom_admonitions.css" # 自定义 Admonitions
+
+# extra_javascript:
+# - https://unpkg.com/mermaid/dist/mermaid.min.js
+
+copyright: 使用了 <a href="https://squidfunk.github.io/mkdocs-material/">Material for MkDocs</a> 以及 Github Pages 生成并托管网站。<br>
