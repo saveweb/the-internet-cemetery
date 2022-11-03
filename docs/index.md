@@ -1,5 +1,5 @@
 ---
-title: 互联网公墓
+title: 首页
 description:
 published: true
 date: "2022-11-03T10:29:13"
