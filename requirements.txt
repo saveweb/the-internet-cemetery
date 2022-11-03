@@ -1,5 +1,4 @@
 mkdocs-abs-rel-plugin
-mkdocs-blogging-plugin
 mkdocs-callouts
 mkdocs-exclude
 mkdocs-exclude-search
