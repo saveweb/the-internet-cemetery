@@ -165,4 +165,4 @@ extra_css:
 # extra_javascript:
 # - https://unpkg.com/mermaid/dist/mermaid.min.js
 
-copyright: 使用了 <a href="https://squidfunk.github.io/mkdocs-material/">Material for MkDocs</a> 以及 Github Pages 生成并托管网站。<br>
+copyright: 使用了 <a href="https://squidfunk.github.io/mkdocs-material/">Material for MkDocs</a> 以及 Github Pages 生成并托管网站。<br>除非另有声明，本网站内容采用CC0协议授权。<br>
